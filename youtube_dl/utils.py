@@ -2902,6 +2902,9 @@ def dfxp2srt(dfxp_data):
             index_offset += 1
             out.append('%s\n' % (parse_node(para)))
         else:
+            if out:
+                out.append('\n')
+            out.append('%d\n%s --> %s\n%s\n' % (
                 index - index_offset,
                 srt_subtitles_timecode(begin_time),
                 srt_subtitles_timecode(end_time),
