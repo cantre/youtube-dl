@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from .common import FileDownloader
 from .f4m import F4mFD
 from .hls import HlsFD
-from .hls import WebVttHlsFD
 from .http import HttpFD
 from .rtmp import RtmpFD
 from .dash import DashSegmentsFD
@@ -21,7 +20,6 @@ from ..utils import (
 PROTOCOL_MAP = {
     'rtmp': RtmpFD,
     'm3u8_native': HlsFD,
-    'm3u8_webvtt': WebVttHlsFD,
     'm3u8': FFmpegFD,
     'mms': RtspFD,
     'rtsp': RtspFD,
