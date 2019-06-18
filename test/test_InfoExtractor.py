@@ -438,14 +438,7 @@ jwplayer("mediaplayer").setup({"abouttext":"Visit Indie DB","aboutlink":"http:\/
                     'tbr': 1467,
                     'width': 1024,
                     'height': 576,
-                }],
-                {
-                    'fra': [{
-                        'url': 'http://replayftv-pmd.francetv.fr/subtitles/2017/16/156589847-1492488987.m3u8',
-                        'ext': 'vtt',
-                        'protocol': 'm3u8_webvtt'
-                    }]
-                },
+                }]
             ),
             (
                 # https://github.com/ytdl-org/youtube-dl/issues/11995
@@ -519,8 +512,7 @@ jwplayer("mediaplayer").setup({"abouttext":"Visit Indie DB","aboutlink":"http:\/
                     'tbr': 2374,
                     'width': 1024,
                     'height': 576,
-                }],
-                {},
+                }]
             ),
             (
                 # https://github.com/ytdl-org/youtube-dl/issues/12211
@@ -579,8 +571,7 @@ jwplayer("mediaplayer").setup({"abouttext":"Visit Indie DB","aboutlink":"http:\/
                     'tbr': 1396.736,
                     'width': 854,
                     'height': 480,
-                }],
-                {},
+                }]
             ),
             (
                 # http://www.twitch.tv/riotgames/v/6528877
@@ -650,8 +641,7 @@ jwplayer("mediaplayer").setup({"abouttext":"Visit Indie DB","aboutlink":"http:\/
                     'tbr': 3214.134,
                     'width': 1280,
                     'height': 720,
-                }],
-                {},
+                }]
             ),
             (
                 # http://www.vidio.com/watch/165683-dj_ambred-booyah-live-2015
@@ -686,8 +676,7 @@ jwplayer("mediaplayer").setup({"abouttext":"Visit Indie DB","aboutlink":"http:\/
                     'tbr': 1200,
                     'width': 1280,
                     'height': 720,
-                }],
-                {}
+                }]
             ),
             (
                 # https://github.com/ytdl-org/youtube-dl/issues/18923
@@ -744,19 +733,17 @@ jwplayer("mediaplayer").setup({"abouttext":"Visit Indie DB","aboutlink":"http:\/
                     'acodec': 'none',
                     'width': 1280,
                     'height': 720,
-                }],
-                {}
+                }]
             ),
         ]
 
-        for m3u8_file, m3u8_url, expected_formats, expected_subs in _TEST_CASES:
+        for m3u8_file, m3u8_url, expected_formats in _TEST_CASES:
             with io.open('./test/testdata/m3u8/%s.m3u8' % m3u8_file,
                          mode='r', encoding='utf-8') as f:
-                formats, subs = self.ie._parse_m3u8_formats_and_subtitles(
+                formats = self.ie._parse_m3u8_formats(
                     f.read(), m3u8_url, ext='mp4')
                 self.ie._sort_formats(formats)
                 expect_value(self, formats, expected_formats, None)
-                expect_value(self, subs, expected_subs, None)
 
     def test_parse_mpd_formats(self):
         _TEST_CASES = [
